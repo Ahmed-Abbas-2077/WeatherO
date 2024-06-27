@@ -1,4 +1,4 @@
-# WeatherO
+# WeatherO ☀️
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.11.2-blue.svg)](https://www.python.org/)
@@ -6,14 +6,14 @@
 
 A simple Django web application. It provides current weather information for any location, leveraging a OpenWeatherMap API for real-time data.
 
-## Features
+## Features ☁️
 
 * **Location-based Weather:** Get accurate weather data for any city or location.
 * **Intuitive UI:** Clean and user-friendly interface for easy interaction.
 * **API Integration:** Fetches weather data using [OpenWeatherMap](https://openweathermap.org/) API.
 
 
-## Project Setup
+## Project Setup ⛈️
 
 1. **Clone the repository:**
    ```bash
@@ -39,7 +39,7 @@ Get your API key from your account dashboard.
     python manage.py runserver
 
 
-## Usage
+## Usage ❄️
 1. Open your web browser and visit http://127.0.0.1:8000/.
 2. Enter a city name or location in the search bar and click "Compare Weather."
 3. View the current weather details and forcasts.
