@@ -17,12 +17,31 @@ def index(request):
     # exclude is the parameter to exclude the current, minutely and hourly weather data, appid is the API key
     forecast_url = 'http://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&exclude=current,minutely,hourly&appid={}'
 
-    if request == 'POST':
+    if request.method == 'POST':
         city1 = request.POST['city1']
-        city2 = request.POST.get('city2', None)  # get city2 from the form
+        city2 = request.POST.get('city2', None)  # is optional
 
+        # Fetching the weather data and 5-day forecast of the city
+        weather_data1, daily_forecasts1 = fetch_weather_and_forecast(
+            city1, api_key, current_weather_url, forecast_url)
+
+        if city2:
+            weather_data2, daily_forecasts2 = fetch_weather_and_forecast(city2, api_key, current_weather_url,
+                                                                         forecast_url)
+        else:
+            weather_data2, daily_forecasts2 = None, None
+
+        # context is a dictionary that contains the data that is to be rendered in the template
+        context = {
+            'weather_data1': weather_data1,
+            'daily_forecasts1': daily_forecasts1,
+            'weather_data2': weather_data2,
+            'daily_forecasts2': daily_forecasts2,
+        }
+
+        return render(request, 'weather_app/index.html', context)
     else:
-        return render(request, 'weatherApp/index.html')
+        return render(request, 'weather_app/index.html')
 
 
 # This function fetches the current weather and 5-day forecast of the city (not a route handler)
